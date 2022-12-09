@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_0b78ffe91c1a4814a9885320c161de06 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_f17bf338b13749b0948d6a65fd9cd9ec }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_d5395f9a738246f69bdcf576be120ac5 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_75048464d4954a748ea2a5fad79bdb0b }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0b78ffe91c1a4814a9885320c161de06 }}/phanan/koel:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d5395f9a738246f69bdcf576be120ac5 }}/phanan/koel:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'VMusicNet'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_88a784d7e3b24307bc39e1a619c04f8e }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0b78ffe91c1a4814a9885320c161de06 }}/phanan/koel:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a2df1e1e20f145fa95d9412e94990d56 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d5395f9a738246f69bdcf576be120ac5 }}/phanan/koel:${{ github.sha }}'
